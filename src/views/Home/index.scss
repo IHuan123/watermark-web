@@ -1,0 +1,22 @@
+.home-page{
+    width:100vw;
+    height:100vh;
+    position: relative;
+    background: url(/src/asstes/svg/cool-background.svg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: #D6F2FF;
+    .form-box{
+        width:800px;
+        height:300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        left:50%;
+        top:50%;
+        transform: translate(-50%,-50%);
+        
+    }
+}

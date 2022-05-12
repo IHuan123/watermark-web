@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "target": "esnext", //指的是打包成es5代码
+    "module": "esnext", // 指的是用的es module的引入方式
+    "strict": true,  // 严格模式  
+    "jsx": "react-jsx", // Specify JS
+    "noImplicitAny": true, //没有隐式的any
+    "moduleResolution": "node",
+    "experimentalDecorators": true,  // 启用实验性的ES装饰器。
+    "skipLibCheck": true,
+    "esModuleInterop": true,// 允许export=导出，由import from 导入
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,// 禁止对同一个文件的不一致的引用
+    "useDefineForClassFields": true,
+    "resolveJsonModule": true,  //是否允许把json文件当做模块进行解析
+    "importHelpers": true, // 通过tslib引入helper函数，文件必须是模块
+    "noUnusedLocals": true, // 检查只声明、未使用的局部变量(只提示不报错) 引入但未使用的模块也会报错
+    "removeComments": false,  // 删除注释 
+    "sourceMap": true,
+    "baseUrl": ".",
+    // ts支持alias
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ],
+    "plugins": [{
+      "name": "typescript-plugin-css-modules",
+      "options": {
+        "customMatcher": "\\.(c|le||lle|sa|sc)ss$"
+      }
+    }]
+  },
+  "include": ["src","./src/asstes/image.d.ts","*.d.ts"],//配置的.d.ts文件，用于定义一些 declare
+  "exclude": [
+    "node_modules"
+  ]
+}

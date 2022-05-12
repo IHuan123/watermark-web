@@ -1,0 +1,32 @@
+# Browserslist这个东西单独是没用的，
+#（补充: 在vue官方脚手架中，browserslist字段会被 @babel/preset-env 和 Autoprefixer 用来确定需要转译的 JavaScript 特性和需要添加的 CSS 浏览器前缀。2019-7-22）下面的搭配的工具列表：
+
+[development]
+last 1 chrome version
+last 1 firefox version
+last 1 safari version
+
+[production]
+> 1%
+not dead
+not op_mini all
+
+
+[modern]
+last 1 chrome version
+last 1 firefox version
+ 
+[ssr]
+node 12
+
+
+# > 1%	全球超过1%人使用的浏览器
+# > 5% in US	指定国家使用率覆盖
+# last 2 versions	所有浏览器兼容到最后两个版本根据CanIUse.com追踪的版本
+# Firefox ESR	火狐最新版本
+# Firefox > 20	指定浏览器的版本范围
+# not ie <=8	方向排除部分版本
+# Firefox 12.1	指定浏览器的兼容到指定版本
+# unreleased versions	所有浏览器的beta测试版本
+# unreleased Chrome versions	指定浏览器的测试版本
+# since 2013	2013年之后发布的所有版本
