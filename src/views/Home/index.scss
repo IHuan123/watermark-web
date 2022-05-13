@@ -1,22 +1,35 @@
-.home-page{
-    width:100vw;
-    height:100vh;
+.home-page {
+    width: 100vw;
+    height: 100vh;
     position: relative;
-    background: url(/src/asstes/svg/cool-background.svg) no-repeat;
+    background: #D6F2FF url(/src/asstes/svg/layered-waves-haikei.svg) no-repeat center;
     background-size: cover;
-    background-position: center;
-    background-color: #D6F2FF;
-    .form-box{
-        width:800px;
-        height:300px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        left:50%;
-        top:50%;
-        transform: translate(-50%,-50%);
-        
+    overflow-y: auto;
+    &::before {
+        display: table;
+        content: ""
+    }
+
+    .form-box {
+        width: 700px;
+        margin: 200px auto 0;
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-info {
+            width: 100%;
+            margin: 20px auto;
+
+            .video-box {
+                width: 100%;
+                height: 350px;
+                background: #000000;
+            }
+        }
+
     }
 }

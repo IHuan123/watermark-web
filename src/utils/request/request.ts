@@ -10,10 +10,11 @@ class Request {
     constructor(config: RequestConfig) {
         this.instance = axios.create(config)
         this.interceptorsObj = config.intercepotrs
+         // 全局响应拦截器保证最后执行
         this.instance.interceptors.request.use(
-            (res: AxiosRequestConfig) => {
+            (config: AxiosRequestConfig) => {
                 console.log('全局请求拦截器')
-                return res
+                return config
             },
             (err: any) => err,
         )
@@ -30,36 +31,36 @@ class Request {
         this.instance.interceptors.response.use(
             // 因为我们接口的数据都在res.data下，所以我们直接返回res.data
             (res: AxiosResponse) => {
-                console.log('全局响应拦截器')
+                console.log('全局响应拦截器',res)
                 return res.data
             },
             (err: any) => err,
         )
     }
 
-    request(config:RequestConfig){
-        return this.instance.request(config)
+    request<T=any>(config:RequestConfig){
+        return this.instance.request<T>(config)
     }
-    get<T=any>(config:{url:string,params?:T,data?:T}){
-        return this.request({
+    get<T=any,U=any>(config:{url:string,params?:T,data?:T}){
+        return this.request<U>({
             method:"get",
             ...config
         })
     }
-    post<T=any>(config:{url:string,params?:T,data?:T}){
-        return this.request({
+    post<T=any,U=any>(config:{url:string,params?:T,data?:T}){
+        return this.request<U>({
             method:"post",
             ...config
         })
     }
-    put<T=any>(config:{url:string,params?:T,data?:T}){
-        return this.request({
+    put<T=any,U=any>(config:{url:string,params?:T,data?:T}){
+        return this.request<U>({
             method:"put",
             ...config
         })
     }
-    delete<T=any>(config:{url:string,params?:T,data?:T}){
-        return this.request({
+    delete<T=any,U=any>(config:{url:string,params?:T,data?:T}){
+        return this.request<U>({
             method:"delete",
             ...config
         })

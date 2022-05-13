@@ -158,23 +158,22 @@ module.exports = {
                         }
                     },
                     {
-                        test: /\.(html|png|jpg|gif|jpeg)/,
+                        test: /\.(html|png|jpg|gif|jpeg|svg)/,
                         loader: "url-loader",
                         options: {
                             limint: 8 * 1024,
-                            name: '[hash:10].[ext]',
-                            outputPath: "static/images",
+                            name: 'asstes/[hash:10].[ext]',
                             esModule: false
-                        }
+                        },
+                        type:'javascript/auto' //转换 json 为 js
                     },
                     {
-                        test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+                        test: /\.(ttf|eot|woff(2)?)(\?[a-z0-9=&.]+)?$/,
                         loader: "file-loader",
                         options: {
                             name:"assets/[name].[ext]",
-                            outputPath: "static/iconfont",
                         },
-                        exclude: /\.(css|html|png|jpg|gif|jpeg)/
+                        exclude: /\.(css|html|png|jpg|gif|jpeg)/,
                     },
                 ]
             }

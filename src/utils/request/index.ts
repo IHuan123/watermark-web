@@ -1,5 +1,5 @@
 import Request from "./request";
-
+import { NoticeRef } from "@/components/Notice/Notice" 
 const request = new Request({
     timeout:3000,
     intercepotrs:{
@@ -11,11 +11,20 @@ const request = new Request({
             return e
         },
         responseInterceptors(res){
-            console.log("index response 拦截")
-            console.log(res)
-            return res
+            let code = res.data.code
+            NoticeRef.current?.open({
+                message: res.data.msg,
+                type: code!==200?"error":"success",
+                origin: { horizontal: "center", vertical: "top" },
+            })
+            return res.data
         },
         responseInterceptorsCatch(e){
+            NoticeRef.current?.open({
+                message: e.message,
+                type: "error",
+                origin: { horizontal: "center", vertical: "top" },
+            })
             return e
         },
     }
