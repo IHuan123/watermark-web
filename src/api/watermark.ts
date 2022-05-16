@@ -9,7 +9,7 @@ export interface VideoRes {
 }
 export function getVideoUrl(params:VideoParams){
     return request.get<VideoParams,VideoRes | null>({
-        url:"/api/parse",
+        url:"/parse",
         params
     })
 }

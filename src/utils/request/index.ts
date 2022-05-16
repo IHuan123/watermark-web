@@ -1,10 +1,13 @@
 import Request from "./request";
 import { NoticeRef } from "@/components/Notice/Notice" 
+const isProd = process.env.NODE_ENV === "production"
+console.log(isProd)
 const request = new Request({
+    baseURL:isProd ? 'http://localhost:9000' : '/api',
     timeout:3000,
     intercepotrs:{
         requestInterceptors(config){
-            console.log("index request 拦截")
+            // console.log("index request 拦截")
             return config
         },
         requestInterceptorsCatch(e){

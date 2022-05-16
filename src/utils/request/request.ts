@@ -13,7 +13,7 @@ class Request {
          // 全局响应拦截器保证最后执行
         this.instance.interceptors.request.use(
             (config: AxiosRequestConfig) => {
-                console.log('全局请求拦截器')
+                // console.log('全局请求拦截器')
                 return config
             },
             (err: any) => err,
@@ -31,7 +31,7 @@ class Request {
         this.instance.interceptors.response.use(
             // 因为我们接口的数据都在res.data下，所以我们直接返回res.data
             (res: AxiosResponse) => {
-                console.log('全局响应拦截器',res)
+                // console.log('全局响应拦截器',res)
                 return res.data
             },
             (err: any) => err,

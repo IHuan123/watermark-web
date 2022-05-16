@@ -95,7 +95,6 @@ function handlePlugin() {
     return plugins
 }
 
-console.log("环境变量：",process.env.VUE_APP_BASE_UPL)
 
 module.exports = {
     mode: process.env.NODE_ENV,
