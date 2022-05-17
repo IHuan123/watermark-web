@@ -10,6 +10,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import CircularProgress from '@mui/material/CircularProgress';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import Box from '@mui/material/Box';
+import { Throttle } from "@/utils/index"
 interface InputProps {
   value: string
   onChange?: (e: any) => void
@@ -37,16 +38,16 @@ const ParseButton = ({ onClick, state, loading }: { onClick: () => void, state: 
           />
         )}
         <IconButton color="primary" sx={{ p: '10px', color: "#eee" }} aria-label="directions" onClick={onClick}>
-          { state==='none'&&<DirectionsIcon fontSize={'large'} color="inherit" /> }
-          {state === 'success' && <CheckIcon fontSize={'large'} color="success" /> }
-          {state==='error'&&<ErrorOutlineIcon fontSize={'large'} color="warning"/>}
+          { state==='none' &&<DirectionsIcon fontSize={'large'} color="inherit" /> }
+          { state === 'success' && <CheckIcon fontSize={'large'} color="success" /> }
+          { state==='error'&&<ErrorOutlineIcon fontSize={'large'} color="warning"/>}
         </IconButton>
       </Box>      
     </Box>
 
   )
 }
-
+const throttle = new Throttle()
 export default function CustomizedInputBase({ value, onChange, onConfirm, onClear }: InputProps) {
   const [loading, setLoading] = useState<boolean>(false)
   const [btnState, setBtnState] = useState<StateType>("none")
@@ -62,8 +63,10 @@ export default function CustomizedInputBase({ value, onChange, onConfirm, onClea
       color:"rgba(76, 175, 80,.2)"
     }
   }
+
   const handleClick = (): void => {
     setLoading(true)
+    setBtnState("none")
     onConfirm().then(res => {
       setLoading(false)
       handleBtnState(res ? "success" : "error")
@@ -72,6 +75,8 @@ export default function CustomizedInputBase({ value, onChange, onConfirm, onClea
       handleBtnState("error")
     })
   }
+  
+  const throttleClick = throttle.use(handleClick)
   const reset = () => {
     setLoading(false)
     setBtnState("none")
@@ -108,7 +113,7 @@ export default function CustomizedInputBase({ value, onChange, onConfirm, onClea
         </IconButton> : ""
       }
       <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-      <ParseButton loading={loading} state={btnState} onClick={handleClick} />
+      <ParseButton loading={loading} state={btnState} onClick={ throttleClick } />
     </Paper>
   );
 }

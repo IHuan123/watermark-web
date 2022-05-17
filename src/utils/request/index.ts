@@ -1,7 +1,6 @@
 import Request from "./request";
 import { NoticeRef } from "@/components/Notice/Notice" 
 const isProd = process.env.NODE_ENV === "production"
-console.log(isProd)
 const request = new Request({
     baseURL:isProd ? 'http://localhost:9000' : '/api',
     timeout:3000,
@@ -32,4 +31,6 @@ const request = new Request({
         },
     }
 })
+
+
 export default request
