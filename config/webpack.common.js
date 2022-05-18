@@ -77,7 +77,7 @@ function handlePlugin() {
         }),
         new HtmlWebpackPlugin({
             template: resolve(__dirname, "../public/index.html"),
-            favicon: '', //指定网站图标
+            favicon: resolve(__dirname,'../public/video.ico'), //指定网站图标
             title: "cli",
             filename: "index.html",
             inject: "head",
