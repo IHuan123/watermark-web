@@ -45,10 +45,10 @@ const optimization = {
 
     // 这个新特性可以让我们来标识我们的代码有没有副作用。
     // sideEffects:true,
-    splitChunks: {
-        // all 表示同步加载和异步加载，async 表示异步加载，initial 表示同步加载
-        chunks: 'all', 
-    }
+    // splitChunks: {
+    //     // all 表示同步加载和异步加载，async 表示异步加载，initial 表示同步加载
+    //     chunks: 'all',
+    // }
 }
 
 module.exports = merge(common, {
