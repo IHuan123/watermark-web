@@ -115,6 +115,9 @@ module.exports = {
             "@": srcPath
         }
     },
+    externals:{
+        Player:"xgplayer"
+    },
     //警告 webpack 的性能提示
     performance: {
         hints: 'warning',

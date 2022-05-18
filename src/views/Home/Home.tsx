@@ -15,7 +15,7 @@ import IconButton from '@mui/material/IconButton';
 import Alert from '@mui/material/Alert';
 import Divider from '@mui/material/Divider';
 import Grow from '@mui/material/Grow';
-// import VideoJS from "@/components/Video/index"
+import VideoJS from "@/components/Video/index"
 import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
 
 const mapStateToProps = (state: any) => {
@@ -42,7 +42,8 @@ const Info: React.FC<IProps> = ({ show, data }) => {
             <div className="video-info">
                 <Card sx={{ minWidth: 700, boxSizing: "border-box", background: "rgba(0,0,0,0.3)", backdropFilter: "blur(10px)", }}>
                     <CardContent>
-                        <video src={data.path} className="video-box" controls={true}></video>
+                        <VideoJS url={data?.path}/>
+                        {/* <video src={data.path} className="video-box" controls={true}></video> */}
                         <Box sx={{ width: "100%", fontSize: "14px", m: "10px 0", backgroundColor: "#5F679C", color: "#fff", borderRadius: "4px", p: 2, boxSizing: "border-box", display: "flex", alignItems: "center" }}>
                             <IconButton color="primary" sx={{ p: '5px 5px ', color: "#eee" }} aria-label="directions">
                                 <LinkIcon fontSize={'small'} color="inherit" />

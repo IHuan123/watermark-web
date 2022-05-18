@@ -5,7 +5,6 @@ import Notice from "@/components/Notice/Notice";
 import Home from "@/views/Home/Home"
 import NotFound from "@/views/404/NotFound";
 import "./App.scss"
-
 const App: React.FC = () => {
     return (
         <>
