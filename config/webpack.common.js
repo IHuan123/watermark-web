@@ -131,7 +131,6 @@ module.exports = {
         }
     },
 
-    optimization: {runtimeChunk: 'single'},
     module: {
         // 将缺失的导出提示成错误而不是警告
         strictExportPresence: true,

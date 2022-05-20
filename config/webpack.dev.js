@@ -37,5 +37,6 @@ module.exports = merge(common, {
          */
         hot: true, //让webpackDevServer开启热更新功能
     },
+    optimization: {runtimeChunk: 'single'},
     plugins: []
 })

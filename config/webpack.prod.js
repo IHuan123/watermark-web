@@ -11,7 +11,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const optimization = {
     moduleIds: 'deterministic',
     // 要在一个 HTML 页面上使用多个入口时，还需设置 optimization.runtimeChunk: 'single'
-    // runtimeChunk: 'single',  //运行时文件单独打包
+    runtimeChunk: 'single',  //运行时文件单独打包
     splitChunks: {
         // runtime 为了运行mian.js所要提供的代码。
         // node_modules venders 全局的
