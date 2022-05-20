@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --node-env=development --config config/webpack.dev.js",
-    "build": "webpack --node-env=production --config config/webpack.pro.js",
-    "server": "webpack --mode dev --config config/webpack.pro.js",
-    "build2": "webpack --mode dev --config config/webpack.dev.js",
+    "build": "webpack --node-env=production --config config/webpack.prod.js",
+    "server": "webpack --mode dev --config config/webpack.dev.js",
+    "build2": "webpack --mode dev --config config/webpack.prod.js",
     "bundle-report": "webpack-bundle-analyzer dist/stats.json",
     "br": "npm run build && npm run bundle-report"
   },
