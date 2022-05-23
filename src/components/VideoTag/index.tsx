@@ -14,7 +14,7 @@ import qmkgLogo from "/static/images/kg.png"
 import zuiyouLogo from "/static/images/zuiyou.png" 
 const types = new Map([
   ["douyin",{ name: "抖音",icon:douYinLogo }],
-  ["BiliBili",{ name: "BiliBili",icon:bilibiliLogo }],
+  ["bilibili",{ name: "BiliBili",icon:bilibiliLogo }],
   ["huoshan",{ name: "火山",icon:huoshanLogo }],
   ["kuaishou",{ name: "快手",icon:kuaishouLogo }],
   ["pipix",{ name: "皮皮虾",icon:pipixLogo }],
