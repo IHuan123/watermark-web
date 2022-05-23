@@ -129,9 +129,7 @@ const Info: React.FC<IProps> = ({ show, data }) => {
 };
 
 const Home: React.FC<any> = () => {
-  const [url, setUrl] = useState<string>(
-    "https://m.eyepetizer.net/u1/video-detail?video_id=309719"
-  );
+  const [url, setUrl] = useState<string>();
   const [videoInfo, setVideoInfo] = useState<any>(null);
   useEffect(() => {});
   const getVideo: () => Promise<boolean> = () => {
