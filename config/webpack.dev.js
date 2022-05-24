@@ -2,7 +2,11 @@
 const { resolve } = require("path")
 const { merge } = require("webpack-merge")
 const common = require("./webpack.common.js")
-module.exports = merge(common, {
+
+
+
+
+module.exports = merge({
     devtool: "source-map", //控制台提示信息映射
     devServer: {
         client: {
@@ -38,5 +42,10 @@ module.exports = merge(common, {
         hot: true, //让webpackDevServer开启热更新功能
     },
     optimization: {runtimeChunk: 'single'},
+    module:{
+        rules:[
+            
+        ]
+    },
     plugins: []
-})
+},common)

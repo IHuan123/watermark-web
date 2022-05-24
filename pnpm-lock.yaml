@@ -45,6 +45,7 @@ specifiers:
   source-map-loader: ^3.0.1
   style-loader: ^3.3.1
   terser-webpack-plugin: ^5.3.1
+  thread-loader: ^3.0.4
   three: ^0.139.2
   ts-loader: ^9.2.8
   typescript: ^4.6.3
@@ -106,6 +107,7 @@ devDependencies:
   source-map-loader: 3.0.1_webpack@5.70.0
   style-loader: 3.3.1_webpack@5.70.0
   terser-webpack-plugin: 5.3.1_webpack@5.70.0
+  thread-loader: 3.0.4_webpack@5.70.0
   ts-loader: 9.2.8_ougmcaqwpyw5y5phguoka2ilpy
   typescript: 4.6.3
   typescript-plugin-css-modules: 3.4.0_typescript@4.6.3
@@ -7035,6 +7037,20 @@ packages:
       commander: 2.20.3
       source-map: 0.7.3
       source-map-support: 0.5.21
+    dev: true
+
+  /thread-loader/3.0.4_webpack@5.70.0:
+    resolution: {integrity: sha512-ByaL2TPb+m6yArpqQUZvP+5S1mZtXsEP7nWKKlAUTm7fCml8kB5s1uI3+eHRP2bk5mVYfRSBI7FFf+tWEyLZwA==}
+    engines: {node: '>= 10.13.0'}
+    peerDependencies:
+      webpack: ^4.27.0 || ^5.0.0
+    dependencies:
+      json-parse-better-errors: 1.0.2
+      loader-runner: 4.2.0
+      loader-utils: 2.0.2
+      neo-async: 2.6.2
+      schema-utils: 3.1.1
+      webpack: 5.70.0_webpack-cli@4.9.2
     dev: true
 
   /three/0.139.2:

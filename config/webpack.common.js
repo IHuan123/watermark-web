@@ -1,8 +1,7 @@
 "use strict";
 const { resolve } = require("path");
 const srcPath = resolve(__dirname, "../src");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-
+const { ProgressPlugin } = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 console.log("当前环境:", process.env.NODE_ENV);
@@ -54,24 +53,26 @@ const jsLoader = [
     test: /\.(js|jsx)$/,
     exclude: /(node_modules|bower_components)/,
     include: resolve(__dirname, "../src"),
-    use: {
-      loader: "babel-loader",
-    },
+    use: [
+      "babel-loader",
+    ],
   },
   {
     test: /\.(ts|tsx)$/,
     exclude: /(node_modules|bower_components)/,
     include: resolve(__dirname, "../src"),
-    use: ["babel-loader", "ts-loader"],
+    use: [
+
+      "babel-loader",
+      "ts-loader",
+    ],
   },
 ];
 
 // 插件
 function handlePlugin() {
   const plugins = [
-    new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: ["**/*", "!favicon.ico", "!lib/**"],
-    }),
+    new ProgressPlugin(),
     new HtmlWebpackPlugin({
       template: resolve(__dirname, "../public/index.html"),
       favicon: resolve(__dirname, "../public/video.ico"), //指定网站图标
@@ -142,12 +143,21 @@ module.exports = {
             use: cssLoader,
           },
           {
-            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+            test: /\.(png|jpg|gif|jpeg|svg)$/,
             type: "asset",
+            exclude: /(asstes\/icon)/,
+            //解析
             parser: {
+              //转base64的条件
               dataUrlCondition: {
-                maxSize: 10000,
+                maxSize: 8 * 1024, // 8kb
               },
+            },
+            generator: {
+              //与output.assetModuleFilename是相同的,这个写法引入的时候也会添加好这个路径
+              filename: "static/images/[name].[hash:6][ext]",
+              //打包后对资源的引入，文件命名已经有static了
+              publicPath: "/",
             },
           },
           {
@@ -157,17 +167,17 @@ module.exports = {
               esModule: false,
             },
           },
-          {
-            test: /\.(html|png|jpg|gif|jpeg|svg)/,
-            loader: "url-loader",
-            options: {
-              limint: 8 * 1024,
-              name: "asstes/[hash:10].[ext]",
-              esModule: false,
-            },
-            exclude: /(asstes\/icon)/,
-            type: "javascript/auto", //转换 json 为 js
-          },
+          // webpack5 中不使用url-loader
+          // {
+          //   test: /\.(png|jpg|gif|jpeg|svg)$/,
+          //   loader: "url-loader",
+          //   options: {
+          //     limint: 8 * 1024,
+          //     esModule: false,
+          //   },
+          //   exclude: /(asstes\/icon)/,
+          //   type: "javascript/auto", //转换 json 为 js
+          // },
           {
             test: /\.(ttf|eot|woff(2)?)(\?[a-z0-9=&.]+)?$/,
             loader: "file-loader",
@@ -180,7 +190,7 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        include:/(asstes\/icon)/,
+        include: /(asstes\/icon)/,
         use: ["@svgr/webpack"],
       },
     ],
