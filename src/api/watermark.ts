@@ -8,7 +8,7 @@ export interface VideoRes {
     platformInfo: { name: string, platform: string }
 }
 export function getVideoUrl(params:VideoParams){
-    return request.get<VideoParams,VideoRes | null>({
+    return request.get<VideoParams, VideoRes | null>({
         url:"/parse",
         params
     })

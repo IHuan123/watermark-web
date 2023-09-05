@@ -1,5 +1,4 @@
 import {
-    ReactElement,
     useState,
     createRef,
     useImperativeHandle,
@@ -9,7 +8,7 @@ import {
 } from "react";
 import { Alert, AlertColor, Snackbar, SnackbarOrigin, AlertTitle } from "@mui/material";
 import Slide, { SlideProps } from '@mui/material/Slide';
-
+import React from "react"
 
 
 
@@ -28,7 +27,7 @@ interface INoticRef {
 
 export const NoticeRef = createRef<null | INoticRef>();
 
-const Notice = (): ReactElement => {
+const Notice = () => {
     const [state, setState] = useState(false);
     const time = useRef<any>(null);
     const [message, setMessage] = useState("");

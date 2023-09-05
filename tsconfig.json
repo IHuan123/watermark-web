@@ -3,7 +3,7 @@
     "target": "esnext", //指的是打包成es5代码
     "module": "esnext", // 指的是用的es module的引入方式
     "strict": true,  // 严格模式  
-    "jsx": "react-jsx", // Specify JS
+    "jsx": "preserve", // Specify JS
     "noImplicitAny": true, //没有隐式的any
     "moduleResolution": "node",
     "experimentalDecorators": true,  // 启用实验性的ES装饰器。
@@ -35,10 +35,14 @@
       "options": {
         "customMatcher": "\\.(c|le||lle|sa|sc)ss$"
       }
-    }]
+    }],
+    "types":[
+      "node" 
+    ]
   },
   "include": ["src","./src/asstes/image.d.ts","*.d.ts"],//配置的.d.ts文件，用于定义一些 declare
   "exclude": [
     "node_modules"
   ]
+ 
 }

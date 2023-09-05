@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./index.scss";
 import { getVideoUrl } from "@/api/watermark";
 import { download } from "@/api/tools";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 import { NoticeRef } from "@/components/Notice/Notice";
 import CustomizedInputBase from "@/components/CustomizedInputBase/CustomizedInputBase";
 import Card from "@mui/material/Card";
@@ -19,11 +19,11 @@ import VideoJS from "@/components/Video/index";
 import DownloadForOfflineIcon from "@mui/icons-material/DownloadForOffline";
 import VideoTag from "@/components/VideoTag/index";
 
-const mapStateToProps = (state: any) => {
-  return {
-    user: state.user.user,
-  };
-};
+// const mapStateToProps = (state: any) => {
+//   return {
+//     user: state.user.user,
+//   };
+// };
 
 interface PlatformInfo {
   name: string;
@@ -181,4 +181,4 @@ const Home: React.FC<any> = () => {
   );
 };
 
-export default connect(mapStateToProps)(Home);
+export default Home;

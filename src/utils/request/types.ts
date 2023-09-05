@@ -1,4 +1,4 @@
-import type { AxiosRequestConfig, AxiosResponse } from "axios"
+import type { InternalAxiosRequestConfig,AxiosRequestConfig, AxiosResponse } from "axios"
 
 interface ResData {
     code:number,
@@ -6,8 +6,9 @@ interface ResData {
     msg:string
 }
 export interface RequestInterceptors {
+    baseURL?:string
     // 请求拦截
-    requestInterceptors?: ( config:AxiosRequestConfig )=>AxiosRequestConfig
+    requestInterceptors?: ( config: InternalAxiosRequestConfig )=> InternalAxiosRequestConfig
     requestInterceptorsCatch?: (err:any)=>any
     //响应拦截
     responseInterceptors?: <T extends ResData>( res:AxiosResponse<T> )=> T
@@ -21,4 +22,6 @@ export interface CancelRequestSource {
 
 export interface RequestConfig extends AxiosRequestConfig {
     intercepotrs?: RequestInterceptors
+
+
 }
